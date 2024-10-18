@@ -1,0 +1,2 @@
+# MagicWand
+Embedded System Project
