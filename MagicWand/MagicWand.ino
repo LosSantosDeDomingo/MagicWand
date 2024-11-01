@@ -151,24 +151,24 @@ void loop() {
   Dabble.processInput();
 
   // Get Magnitudes
-  gyroRoationMagnitude = magnitudeGyroscopeData(&gyroXAxisAngle, &gyroYAxisAngle, &gyroZAxisAngle);
-  accelDirectionMagnitude = magnitudeAccelerometerData(&accelXAxisDirection, &accelYAxisDirection, &accelZAxisDirection);
+  gyroRoationMagnitude = magnitudeGyroscopeData(gyroXAxisAngle, gyroYAxisAngle, gyroZAxisAngle);
+  accelDirectionMagnitude = magnitudeAccelerometerData(accelXAxisDirection, accelYAxisDirection, accelZAxisDirection);
 
   // Get Direction Angles
-  accelAlphaAngle = getAlphaAngle(&accelXAxisDirection, &accelDirectionMagnitude);
-  accelBetaAngle = getBetaAngle(&accelYAxisDirection, &accelDirectionMagnitude);
-  accelGammaAngle = getGammaAngle(&accelZAxisDirection, &accelDirectionMagnitude);
+  accelAlphaAngle = getAlphaAngle(accelXAxisDirection, accelDirectionMagnitude);
+  accelBetaAngle = getBetaAngle(accelYAxisDirection, accelDirectionMagnitude);
+  accelGammaAngle = getGammaAngle(accelZAxisDirection, accelDirectionMagnitude);
 
   // Get Tilt-Angles
-  yawAngle = getYawAngle(&accelXAxisDirection, &accelYAxisDirection, &accelZAxisDirection);
-  pitchAngle = getPitchAngle(&accelXAxisDirection, &accelYAxisDirection, &accelZAxisDirection);
-  rollAngle = getRollAngle(&accelXAxisDirection, &accelYAxisDirection, &accelZAxisDirection);
+  yawAngle = getYawAngle(accelXAxisDirection, accelYAxisDirection, accelZAxisDirection);
+  pitchAngle = getPitchAngle(accelXAxisDirection, accelYAxisDirection, accelZAxisDirection);
+  rollAngle = getRollAngle(accelXAxisDirection, accelYAxisDirection, accelZAxisDirection);
 
   // Testing Values
-  printFilteredGyroData(&gyroXAxisAngle, &gyroYAxisAngle, &gyroZAxisAngle, &gyroRoationMagnitude);
-  printFilteredAccelData(&accelXAxisDirection, &accelYAxisDirection, &accelZAxisDirection, &accelDirectionMagnitude);
-  printDirectionAngles(&accelAlphaAngle, &accelBetaAngle, &accelGammaAngle);
-  printTiltAngles(&PitchAngle, &RollAngle, &YawAngle);
+  printFilteredGyroData(gyroXAxisAngle, gyroYAxisAngle, gyroZAxisAngle, gyroRoationMagnitude);
+  printFilteredAccelData(accelXAxisDirection, accelYAxisDirection, accelZAxisDirection, accelDirectionMagnitude);
+  printDirectionAngles(accelAlphaAngle, accelBetaAngle, accelGammaAngle);
+  printTiltAngles(pitchAngle, rollAngle, yawAngle);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -388,36 +388,36 @@ void printAccelerometerData(){
 }
 
 void printFilteredGyroData(float gyroXAxis, float gyroYAxis, float gyroZAxis, float gyroMagnitude){
-  println("---------------------------") 
-  println("Gyroscope Data");
-  println("---------------------------") 
-  print("X-Axis: "); print(gyroXAxis); print("Y-Axis: "); print(gyroYAxis); print("Z-Axis: "); println(gyroZAxis); 
-  print("Gyro Magnitude: "); println(gyroMagnitude);
-  println("---------------------------") 
+  Serial.println("---------------------------");
+  Serial.println("Gyroscope Data");
+  Serial.println("---------------------------");
+  Serial.print("X-Axis: "); Serial.print(gyroXAxis); Serial.print("Y-Axis: "); Serial.print(gyroYAxis); Serial.print("Z-Axis: "); Serial.println(gyroZAxis); 
+  Serial.print("Gyro Magnitude: "); Serial.println(gyroMagnitude);
+  Serial.println("---------------------------");
 }
 
 void printFilteredAccelData(float accelXAxis, float accelYAxis, float accelZAxis, float accelMagnitude){
-  println("---------------------------") 
-  println("Accelerometer Data");
-  println("---------------------------") 
-  print("X-Axis: "); print(accelXAxis); print("Y-Axis: "); print(accelYAxis); print("Z-Axis: "); println(accelZAxis); 
-  print("Accel Magnitude: "); println(accelMagnitude);
-  println("---------------------------") 
+  Serial.println("---------------------------");
+  Serial.println("Accelerometer Data");
+  Serial.println("---------------------------");
+  Serial.print("X-Axis: "); Serial.print(accelXAxis); Serial.print("Y-Axis: "); Serial.print(accelYAxis); Serial.print("Z-Axis: "); Serial.println(accelZAxis); 
+  Serial.print("Accel Magnitude: "); Serial.println(accelMagnitude);
+  Serial.println("---------------------------");
 }
 
 void printDirectionAngles(float Alpha, float Beta, float Gamma){
-  println("---------------------------") 
-  println("Direction Angle Data");
-  println("---------------------------") 
-  print("Alpha: "); print(Alpha); print("Beta: "); print(Beta); print("Gamma: "); println(Gamma); 
-  println("---------------------------")     
+  Serial.println("---------------------------");
+  Serial.println("Direction Angle Data");
+  Serial.println("---------------------------");
+  Serial.print("Alpha: "); Serial.print(Alpha); Serial.print("Beta: "); Serial.print(Beta); Serial.print("Gamma: "); Serial.println(Gamma); 
+  Serial.println("---------------------------");    
 }
 
 void printTiltAngles(float Pitch, float Roll, float Yaw){
-  println("---------------------------") 
-  println("Tilt Angle Data");
-  println("---------------------------") 
-  print("Pitch Angle: "); print(Pitch); print("Roll Angle: "); print(Roll); print("Yaw Angle: "); println(Yaw); 
-  println("---------------------------")   
+  Serial.println("---------------------------");
+  Serial.println("Tilt Angle Data");
+  Serial.println("---------------------------");
+  Serial.print("Pitch Angle: "); Serial.print(Pitch); Serial.print("Roll Angle: "); Serial.print(Roll); Serial.print("Yaw Angle: "); Serial.println(Yaw); 
+  Serial.println("---------------------------");  
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
