@@ -190,7 +190,7 @@ void loop() {
   runGestureSystem();
   security.end();
   delay(waitDelay);
-  esp_deep_sleep_start(); // Moved deep sleep to the correct control flow area
+  esp_deep_sleep_start();
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Prototype Function Definitions
@@ -378,7 +378,6 @@ void printAccelerometerData(float accelXAxis, float accelYAxis, float accelZAxis
   Serial.println("Accelerometer Data");
   Serial.println("---------------------------");
   Serial.print("X-Axis:"); Serial.print(accelXAxis); Serial.print(" Y-Axis:"); Serial.print(accelYAxis); Serial.print(" Z-Axis:"); Serial.println(accelZAxis); 
-  // Serial.print("Accel Magnitude: "); Serial.println(accelerometerMagnitude);
   Serial.println("---------------------------");
 }
 
