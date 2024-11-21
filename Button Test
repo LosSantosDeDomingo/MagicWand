@@ -1,0 +1,41 @@
+// Author: Jose Caraballo
+// Class: Embedded Systems
+// Assignment: Final Project
+// Date: 10|18|2024
+
+/*
+  Code Purpose:
+  This code is the first testing code for the embedded system project.
+  The purpose of this code was to test out the tactile push button, by
+  testing how it would respond to the built-in LED on the ESP32.
+*/
+
+// Initialize Variables
+const int BUILTIN_LED = 2;
+const int Button = 36;
+int buttonCondition = 0;
+
+void setup() {
+  // Initialize Pins to components
+  pinMode(BUILTIN_LED, OUTPUT);
+  pinMode(Button, INPUT);
+}
+
+void loop() {
+  // Checks the condition of the button by reading if it is a 0 or 1.
+  buttonCondition = digitalRead(Button);
+
+  // Condition to make the LED blink when the button is pressed
+  if (buttonCondition == HIGH){
+    blinkLED();
+  }
+  delay(10);
+}
+
+// Function to make the LED Blink
+void blinkLED(){
+  digitalWrite(BUILTIN_LED, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(1000);                      // wait for a second
+  digitalWrite(BUILTIN_LED, LOW);   // turn the LED off by making the voltage LOW
+  delay(1000);                      // wait for a second
+}
